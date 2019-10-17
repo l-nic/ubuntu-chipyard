@@ -14,6 +14,7 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "ubuntu/bionic64"
   config.vm.provision :shell, path: "bootstrap.sh"
+  config.vm.network :forwarded_port, guest: 22, host: 2223, id: "ssh"
   config.ssh.forward_agent = true
   config.ssh.forward_x11 = true
   # TODO: Check that all of these customizations are actually needed

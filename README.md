@@ -6,6 +6,7 @@ Configuration steps:
    full-fledged copy of the firechip repository or its own git installation.
 2. Download and install Vagrant for your host operating system.
 3. In a terminal, navigate to this repository.
+4. Run "vagrant plugin install vagrant-disksize"
 4. Run "vagrant up". An Ubuntu 18.04 VM with the RISC-V toolchain, Spike ISA
    simulator, and Verilator cycle-accurate simulator with icenet NIC will
    be automatically provisioned and launched. This will take several hours

@@ -5,8 +5,8 @@ apt-get update
 apt-get upgrade
 mkdir /opt/riscv
 chown -R $USER /opt/riscv
-echo "export RISCV=/opt/riscv" >> /home/vagrant/.bashrc
-echo "export PATH=$RISCV/bin:$PATH" >> /home/vagrant/.bashrc
+echo 'export RISCV=/opt/riscv' >> /home/vagrant/.bashrc
+echo 'export PATH=$RISCV/bin:$PATH' >> /home/vagrant/.bashrc
 export RISCV=/opt/riscv
 export PATH=$RISCV/bin:$PATH
 echo "deb https://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list
