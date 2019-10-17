@@ -23,8 +23,7 @@ sudo chown -R $USER /usr/local/bin/start-tap-devices.sh
 echo "sudo ip tuntap add mode tap dev tap0 user $USER" >> /usr/local/bin/start-tap-devices.sh
 echo "sudo ip link set tap0 up" >> /usr/local/bin/start-tap-devices.sh
 echo "sudo ip addr add 192.168.1.1/24 dev tap0" >> /usr/local/bin/start-tap-devices.sh
-echo "@reboot /usr/local/bin/start-tap-devices.sh" | crontab -
-/usr/local/bin/start-tap-devices.sh
+echo "@reboot /usr/local/bin/start-tap-devices.sh" | sudo crontab -u vagrant -
 
 # Main Repository Initialization
 git clone https://github.com/l-nic/firechip.git
@@ -43,3 +42,5 @@ make -j$(nproc) # Yes, we have to run make twice
 make -j$(nproc) CONFIG=SimNetworkConfig
 cd ~/firechip/tests
 make -j$(nproc)
+
+sudo reboot
