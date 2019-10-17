@@ -21,7 +21,7 @@ apt-get install sbt -y
 # Simulator Network Interface Configuration
 sudo touch /usr/local/bin/start-tap-devices.sh
 sudo chown $USER /usr/local/bin/start-tap-devices.sh
-echo "sudo ip tuntap add mode tap dev tap0 user $USER" >> /usr/local/bin/start-tap-devices.sh
+echo "sudo ip tuntap add mode tap dev tap0 user vagrant" >> /usr/local/bin/start-tap-devices.sh
 echo "sudo ip link set tap0 up" >> /usr/local/bin/start-tap-devices.sh
 echo "sudo ip addr add 192.168.1.1/24 dev tap0" >> /usr/local/bin/start-tap-devices.sh
 echo "@reboot /usr/local/bin/start-tap-devices.sh" | sudo crontab -u vagrant -
@@ -47,5 +47,7 @@ make -j$(nproc)
 # Final Permissions Changes and Reboot
 # TODO: Might be able to get rid of these permissions changes
 sudo chown vagrant /usr/local/bin/start-tap-devices.sh
+sudo chmod +x /usr/local/bin/start-tap-devices.sh
 sudo chown -R vagrant /opt/riscv
+sudo chown -R vagrant /home/vagrant/firechip
 sudo reboot
