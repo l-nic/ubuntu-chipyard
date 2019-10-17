@@ -1,0 +1,10 @@
+--- SimNetwork.cc	2019-10-16 16:29:35.781370092 -0700
++++ NewSimNetwork.cc	2019-10-16 16:29:43.525699026 -0700
+@@ -23,6 +23,7 @@
+         char *rlimit_inc,
+         char *rlimit_period)
+ {
++    devname = "tap0";
+     int inc = rlimit_gbps, period = 64;
+     int gcd = euclid(inc, period);
+ 
