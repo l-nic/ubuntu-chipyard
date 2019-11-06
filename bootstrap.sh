@@ -17,7 +17,7 @@ apt-get install libusb-1.0-0-dev gawk build-essential bison flex texinfo gperf l
 apt-get install patchutils bc zlib1g-dev device-tree-compiler pkg-config libexpat-dev -y
 apt-get install git python default-jdk libssl-dev net-tools -y
 apt-get install sbt -y
-apt-get install python-pip
+apt-get install python-pip -y
 pip install future
 
 # Simulator Network Interface Configuration
