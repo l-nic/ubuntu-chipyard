@@ -18,6 +18,7 @@ apt-get install patchutils bc zlib1g-dev device-tree-compiler pkg-config libexpa
 apt-get install git python default-jdk libssl-dev net-tools -y
 apt-get install sbt -y
 apt-get install python-pip -y
+apt-get install verilator -y
 pip install future
 
 # Simulator Network Interface Configuration
