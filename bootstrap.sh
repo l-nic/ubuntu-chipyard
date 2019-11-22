@@ -29,7 +29,7 @@ echo "sudo ip addr add 192.168.1.1/24 dev tap0" >> /usr/local/bin/start-tap-devi
 echo "@reboot /usr/local/bin/start-tap-devices.sh" | sudo crontab -u vagrant -
 
 # Main Repository Initialization
-git clone https://github.com/l-nic/firechip.git
+git clone --branch lnic-dev https://github.com/l-nic/firechip.git
 cd firechip
 git submodule update --init --recursive --progress
 patch /home/vagrant/firechip/icenet/csrc/SimNetwork.cc /vagrant/SimNetwork.patch

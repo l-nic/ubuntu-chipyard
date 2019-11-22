@@ -4,7 +4,8 @@ Scripts to bring up a vagrant firechip VM
 Configuration steps:
 1. Download l-nic/vagrant-firechip (this repository). The host machine does not need a
    full-fledged copy of the firechip repository or its own git installation.
-2. Download and install Vagrant for your host operating system.
+2. Download and install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Linux_Downloads) for your host operating system.
+   NOTE: may need to run `sudo /sbin/vboxconfig` after installing latest version of VirtualBox.
 3. In a terminal, navigate to this repository.
 4. Run "vagrant plugin install vagrant-disksize"
 4. Run "vagrant up". An Ubuntu 18.04 VM with the RISC-V toolchain, Spike ISA
