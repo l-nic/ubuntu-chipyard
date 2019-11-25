@@ -13,7 +13,8 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "ubuntu/bionic64"
-  config.vm.provision :shell, path: "bootstrap.sh"
+  config.vm.provision :shell, path: "root-bootstrap.sh"
+  config.vm.provision :shell, privileged: false, path: "user-bootstrap.sh"
   config.vm.network :forwarded_port, guest: 22, host: 2223, id: "ssh"
   config.ssh.forward_agent = true
   config.ssh.forward_x11 = true
