@@ -17,6 +17,9 @@ apt-get install git python default-jdk libssl-dev net-tools -y
 apt-get install sbt -y
 apt-get install python-pip -y
 pip install future
+apt-get install libglib2.0-dev -y
+apt-get install libpixman-1-dev -y
+
 
 # Simulator Network Interface Configuration
 touch /usr/local/bin/start-tap-devices.sh
