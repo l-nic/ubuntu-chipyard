@@ -1,25 +1,19 @@
 #!/usr/bin/env bash
 
-export RISCV=/opt/riscv
-export PATH=$RISCV/bin:$PATH
-
 # Main Repository Initialization
-git clone --branch lnic-dev https://github.com/l-nic/firechip.git
-cd firechip
-git submodule update --init --recursive --progress
-patch /home/vagrant/firechip/icenet/csrc/SimNetwork.cc /vagrant/SimNetwork.patch
+git clone --branch lnic/sigcomm-20-submission https://github.com/l-nic/chipyard.git
+cd chipyard
+./scripts/init-submodules-no-riscv-tools.sh
+export MAKEFLAGS=-j$(nproc)
+./scripts/build-toolchains.sh
+echo 'source /home/vagrant/chipyard/env.sh' >> /home/vagrant/.bashrc
 
-# RISC-V Toolchain and Spike (ISA) Simulator Compilation
-cd /home/vagrant/firechip/riscv-tools
-./build.sh -j$(nproc)
-
-# Verilator (Cycle-Accurate) Simulator Compilation
-cd /home/vagrant/firechip/verisim
-make -j$(nproc)
-make -j$(nproc) # Yes, we have to run make twice
-make -j$(nproc) CONFIG=SimNetworkConfig
-cd /home/vagrant/firechip/tests
-make -j$(nproc)
+# Build the simulator and tests
+source /home/vagrant/chipyard/env.sh
+cd sims/verilator
+make debug CONFIG=SimNetworkLNICGPRConfig TOP=TopWithLNIC -j16
+cd /home/vagrant/chipyard/tests
+make -j16
 
 # Final Reboot
 sudo reboot

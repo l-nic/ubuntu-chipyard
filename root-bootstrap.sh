@@ -3,10 +3,6 @@
 # Dependency and Path Configuration
 apt-get update
 apt-get upgrade
-mkdir /opt/riscv
-chown -R vagrant /opt/riscv
-echo 'export RISCV=/opt/riscv' >> /home/vagrant/.bashrc
-echo 'export PATH=$RISCV/bin:$PATH' >> /home/vagrant/.bashrc
 echo "deb https://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823
 apt-get update
@@ -17,6 +13,7 @@ apt-get install git python default-jdk libssl-dev net-tools -y
 apt-get install sbt -y
 apt-get install python-pip -y
 pip install future
+pip install scapy pandas
 apt-get install libglib2.0-dev -y
 apt-get install libpixman-1-dev -y
 
