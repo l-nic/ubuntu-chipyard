@@ -15,16 +15,23 @@ Vagrant VM configuration for nanoPU Chipyard in Ubuntu 18.04
 5. Connect to the vm by typing "vagrant ssh".
 6. When you are done, exit the ssh session and run "vagrant halt" to stop the vm.
 
+Note: DO NOT run "vagrant destroy" without a good reason. While "vagrant halt"
+just shuts down the VM, "vagrant destroy" will delete the VM's virtual hard drive.
+
 ## Loopback Test Example
 1. From your host machine, open a terminal and navigate to the ubuntu-chipyard directory.
 2. Run "vagrant up" and then "vagrant ssh" to launch and connect to the VM.
 3. From within the VM, run the following:
+```console
     $ cd /home/vagrant/chipyard/sims/verilator
     $ ./simulator-example-SimNetworkLNICGPRConfig-debug -v /vagrant/SimNetworkLNICGPRConfig.vcd ../../tests/lnic-cpu-loopback-gpr.riscv
+```
 4. Open a new host terminal, navigate to ubuntu-chipyard, and run "vagrant ssh"
 5. From within this new VM shell, run:
+```console
     $ cd /home/vagrant/chipyard/software/net-app-tester
     $ sudo make loopback
+```
 6. The loopback tests should all pass. After the tests complete, ctrl-C the verilator binary.
 7. The output file /vagrant/SimNetwrokLNICGPRConfig.vcd contains the simulation waveforms.
    This file may be opened with gtkwave. The /vagrant folder in the VM maps to the ubuntu-chipyard
@@ -36,10 +43,7 @@ re-run 'make' from the tests directory to rebuild the test binaries.
 ## Rebuilding nanoPU Chisel Sources
 If you modify the nanoPU or underlying rocket-chip Chisel sources, you will need to rebuild the verilator
 simulator binary. Run the following:
+```console
     $ cd /home/vagrant/chipyard/sims/verilator
     $ make debug CONFIG=SimNetworkLNICGPRConfig TOP=TopWithLNIC -j16
-
-
-
-Note: DO NOT run "vagrant destroy" without a good reason. While "vagrant halt"
-just shuts down the VM, "vagrant destroy" will delete the VM's virtual hard drive.
+```
